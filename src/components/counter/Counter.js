@@ -1,14 +1,18 @@
 import React from 'react';
-import store from '/Users/margibrahmbhatt/reduxcounter/src/store/store';
+import { connect } from 'react-redux';
 import Button from '../button/Button';
 
-export default class Counter extends React.Component {
+class Counter extends React.Component {
   render() {
     return (
       <div>
-        <div> value : {store.getState().value}</div>
+        <div> value : {this.props.value}</div>
         <Button />
       </div>
     );
   }
 }
+const mapStateToProps = state => ({
+  value: state.counter.value,
+});
+export default connect(mapStateToProps, null)(Counter);

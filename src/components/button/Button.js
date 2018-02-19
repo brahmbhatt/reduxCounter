@@ -1,14 +1,19 @@
 import React from 'react';
-import store from '/Users/margibrahmbhatt/reduxcounter/src/store/store';
+import { connect } from 'react-redux';
 import { increment, decrement } from '/Users/margibrahmbhatt/reduxcounter/src/actions/action';
 
-export default class Button extends React.Component {
+class Button extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={() => store.dispatch(increment)}>Increment!</button>
-        <button onClick={() => store.dispatch(decrement)}>Decrement!</button>
+        <button onClick={this.props.increment}>Increment!</button>
+        <button onClick={this.props.decrement}>Decrement!</button>
       </div>
     );
   }
 }
+const mapDispatchToProps = dispatch => ({
+  increment: () => dispatch(increment()),
+  decrement: () => dispatch(decrement()),
+});
+export default connect(null, mapDispatchToProps)(Button);

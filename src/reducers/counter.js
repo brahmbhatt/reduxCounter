@@ -17,5 +17,5 @@ const counter = (state = defaultState, action) => {
   }
 };
 
-module.exports = counter;
+export default counter;
 
